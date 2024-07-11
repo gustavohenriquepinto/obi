@@ -1,43 +1,29 @@
 #include <stdio.h>
 
 int main(void) {
-    int v[6], m = 0, mi, i1=-1, i2=-1;  
-    
-    for(int i=0;i<6;i++){ 
+    int v[6],s=0;
+
+    for(int i=0;i<6;i++){
         scanf("%d", &v[i]);
-        if(v[i]>m) m=v[i], mi=i;
+        s+=v[i];
     }
 
-    for(int i=0;i<6;i++){
-        if(i==mi) continue;
-        for(int j=0;j<6;j++){
-            if(j==mi||j==i) continue;
-            if(v[i]+v[j]==m){
-                i1=i;i2=j; break;
+    for(int i=0;i<5;i++)
+        for(int j=0;j<5-i;j++)
+            if(v[i]>v[i+1]){
+                int aux=v[i];
+                v[i]=v[i+1];
+                v[i+1]=aux;
             }
-        }
-    }
 
-    if(i1==-1){
-        putchar('N');
-        return 0;
-    }
+    int c1=s%3==0&&v[5]==s/3;
+    int c2=0;
+    for(int i = 0; i < 5; i++)
+        for(int j = i + 1; j < 5; j++)
+            if(v[i] + v[j] == v[5])
+                c2=1;
 
-    for(int i=0;i<6;i++){
-        if(i==mi||i==i1||i==i2) continue;
-        for(int j=0;j<6;j++){
-            if(j==mi||j==i||j==i1||j==i2) continue;
-            for(int k=0;k<6;k++){
-                if(k==mi||k==i||k==j||k==i1||k==i2) continue;
-                if(v[i]+v[j]+v[k]==m){
-                    putchar('S');
-                    return 0;
-                }
-            }
-        }
-    }
-
-    putchar('N');
+    putchar(c1&&c2?'S':'N');
 
     return 0;
 }

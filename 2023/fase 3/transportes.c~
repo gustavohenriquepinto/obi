@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void) {
+  int n,m,k;scanf("%d %d %d",&n,&m,&k);
+  
+  int p[k],v[m],u[m],t[m];
+  for(int i=0;i<k;i++)scanf("%d",&p[i]);
+  for(int i=0;i<m;i++)scanf("%d %d %d",&v[i],&u[i],&t[i]);
+
+  int a,b;scanf("%d %d",&a,&b);
+
+  
+  
+
+			
+  return 0;
+}

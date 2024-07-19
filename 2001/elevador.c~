@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(void){
+  int n,c;scanf("%d %d",&n,&c);
+  int s[n],e[n];
+  for(int i=0;i<n;i++)
+    scanf("%d %d",&s[i],&e[i]);
+
+  int x=0;
+  for(int i=0;x>c||i<n;i++){
+    x+=e[i];x-=s[i];
+  }
+
+  if(x>c)putchar('S');
+  else putchar('N');
+  
+  return 0;
+}
